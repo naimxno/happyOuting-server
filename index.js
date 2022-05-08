@@ -44,7 +44,21 @@ async function run() {
       const query = { _id: ObjectId(id) };
       const result = await itemCollection.deleteOne(query);
       res.send(result)
-    })
+    });
+
+    // app.delete('/item/:id', async (req, res) => {
+    //   const id = req.params.id;
+    //   const updateQuantity = req.body;
+    //   const filter = { _id: ObjectId(id) };
+    //   const option = { upsert: true };
+    //   const update = {
+    //     $set: {
+    //       quantity: updateQuantity.quantity,
+    //     }
+    //   };
+    //   const result = await itemCollection.updateOne(filter, updateQuantity, option);
+    //   res.send(result)
+    // });
 
   }
   finally {
