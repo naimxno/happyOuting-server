@@ -46,20 +46,20 @@ async function run() {
       res.send(result)
     });
 
-    // app.delete('/item/:id', async (req, res) => {
-    //   const id = req.params.id;
-    //   const updateQuantity = req.body;
-    //   const filter = { _id: ObjectId(id) };
-    //   const option = { upsert: true };
-    //   const update = {
-    //     $set: {
-    //       quantity: updateQuantity.quantity,
-    //     }
-    //   };
-    //   const result = await itemCollection.updateOne(filter, updateQuantity, option);
-    //   res.send(result)
-    // });
 
+    app.put('/item/:id', async (req, res) => {
+      const id = req.params.id;
+      const updateQuantity = req.body;
+      const filter = { _id: ObjectId(id) };
+      const option = { upsert: true };
+      const updateDoc = {
+        $set: {
+          quantity: updateQuantity.quantity,
+        }
+      };
+      const result = await itemCollection.updateOne(filter, updateDoc, option);
+      res.send(result)
+    });
   }
   finally {
 
